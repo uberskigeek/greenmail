@@ -8,10 +8,15 @@ machine:
  - docker
 
 dependencies:
+ pre:
+ - if [[ ! -e apache-maven-3.3.9 ]]; then wget http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && tar xvfz apache-maven-3.3.9-bin.tar.gz
+ - export M2_HOME=$PWD/apache-maven-3.3.9
+
  override:
   - mvn clean package -DskipTests dependency\:go-offline -Pdocker
  cache_directories:
   - "~/.m2/repository"
+  - "~/apache-maven-3.3.9"
 
 test: 
  override:
