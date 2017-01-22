@@ -9,7 +9,7 @@ copy_artifacts() {
 
 run_maven() {
   mvn -V clean install -DskipTests -Pdocker
-  mvn test -Pdocker
+  mvn test integration-test -Pdocker
   return_code=$?
   if [[ $return_code -ne 0 ]] ; then
     echo 'Test failure(s) found. Exiting'; exit $return_code
