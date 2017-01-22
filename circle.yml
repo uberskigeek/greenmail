@@ -4,6 +4,8 @@ general:
 machine:
  timezone:
   UTC
+ services:
+ - docker
 
 dependencies:
  override:
