@@ -234,6 +234,9 @@ public class ImapSearchTest {
 
     private void testDateTerm(Folder imapFolder, DateTerm term, Message... expectedResults) throws Exception {
         Message[] imapMessages = imapFolder.search(term);
+        for(int i = 0; i < imapMessages.length; i++) {
+        	System.out.println( imapMessages[i].getSentDate().toString()) ;
+        }
         assertEquals(expectedResults.length, imapMessages.length);
         for (int i = 0; i < expectedResults.length; i++) {
             assertSame(imapMessages[i], expectedResults[i]);
